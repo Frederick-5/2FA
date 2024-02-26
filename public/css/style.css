@@ -1,10 +1,32 @@
 @import url("fonts.css");
+@media (max-width:768px) {
+    div.container div.image{
+        display: none;
+    } 
+}
 @media (max-width:570px) {
-    section::-webkit-scrollbar{
-        width: 0px;
-    }
     section.sec svg{
         display: block;
+    }
+    div.container{
+        box-shadow: none;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    div.container div.fill div.head{
+        margin-bottom: 20px;
+        transform: translateY(-15px);
+    }
+    div.container div.fill h1{
+        color: #fff;
     }
     section.sec:before{
         display: none;
@@ -15,27 +37,28 @@
     div.bubble{
         display: none;
     }
-    section div.select{
-        max-width: 300px;
+    div.container div.fill{
+        gap: 15px;
+        padding: 0px;
     }
-    div.container div.image{
-        width: 100px;
-        height: 100px;
+    div.container form{
+        gap: 25px;
     }
-    div.container div.image div.dp{
-        background: #fff;
+    div.container form div.field label{
+        display: none;
     }
-    div.container div.image div.dp h1{
-        font-size: 3.3rem;
-        color: #3700ff;
+    div.container form div.field input:not(#submit-field input){
+        width: 300px;
+        background: transparent;
+        border: 1px solid #0a036d;
+        background: #fff9;
+        backdrop-filter: blur(2px);
     }
-    div.container div.head div.welcome h1{
-        color: #fff;
-        text-align: center;
-        font-size: 2rem;
+    div.container form div.field input::placeholder{
+        color: #0a036d;
     }
-    div.container div.body{
-        transform: translateY(50px);
+    div.container div.fill div.logo{
+        display: flex;
     }
 }
 *{
@@ -46,6 +69,7 @@
 }
 body{
     height: 100vh;
+    overflow: hidden;
 }
 section{
     position: relative;
@@ -55,13 +79,11 @@ section{
     left: 0;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    overflow-x: hidden;
-    overflow-y: auto;
+    align-items: center;
 }
 section::before{
     content: "";
-    position: fixed;
+    position: absolute;
     width: 500px;
     height: 500px;
     background: #a200ff;
@@ -72,7 +94,7 @@ section::before{
 }
 section::after{
     content: "";
-    position: fixed;
+    position: absolute;
     width: 500px;
     height: 500px;
     background: #3700ff;
@@ -82,7 +104,7 @@ section::after{
     z-index: -100;
 }
 .bubble{
-    position: fixed;
+    position: absolute;
     width: 250px;
     height: 250px;
     background: #3700ff;
@@ -101,15 +123,21 @@ section::after{
     top: -70px;
     right: 20px;
 }
-.bubble::before{
-    content: "";
-    position: fixed;
-    width: 125px;
-    height: 125px;
-    background: #a200ff;
-    border-radius: 50%;
-    bottom: 150px;
-    left: 200px;
+.container{
+    position: relative;
+    display: flex;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 1px 1px 20px #5553,
+                -1px -1px 5px #fff5,
+                -1px -1px 20px #5553;
+}
+.container .logo{
+    display: none;
+}
+.container .logo img{
+    width: 100px;
 }
 svg{
     position: fixed;
@@ -120,91 +148,162 @@ svg{
     height: 500px;
     background: linear-gradient(#3700ff 40%, transparent 40%);
     object-fit: cover;
-    z-index: -100;
 }
-::-webkit-scrollbar{
-    width: 12px;
-}
-::-webkit-scrollbar-thumb{
-    background: #eeea;
-    border-radius: 3px;
-}
-.container{
+.container .image{
     position: relative;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #1a16ff;
+    justify-content: center;
+}
+.image .img img{
+    width: 100px;
+}
+.image h1{
+    color: #fff;
+}
+.image p{
+    color: #fff;
+    white-space: wrap;
+    width: 80%;
+    text-align: center;
+    max-width: 350px;
+    margin-top: 20px;
+}
+.container .fill{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 15px;
+    align-items: center;
     gap: 20px;
 }
-.image{
-    position: relative;
-    width: 150px;
-    height: 150px;
+.container .fill .head{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    margin-top: 30px;
 }
-.dp{
+.container .fill h1{
+    color: #a200ff;
+}
+.fill form{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 30px;
+    align-items: center;
+    height: 100%;
+}
+form .field{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 0px 10px;
     position: relative;
+}
+form .field label{
+    color: #a200ff;
+} 
+form .field img{
+    position: absolute;
+    width: 20px;
+    height: auto;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 5;
+}
+form .field input{
+    border: none;
+    outline: none;
+    background: #eee;
+    padding: 10px;
+    border-radius: 7px;
+    color: #020083;
+    caret-color: #1a16ff;
+    font-size: 1rem;
+}
+form .field input::placeholder{
+    color: transparent;
+}
+#submit-field{
+    position: relative;
+    padding: 0px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#submit-field .inp-f{
+    position: relative;
+    width: 100%;
+}
+#submit-field input{
+    width: 100%;
+    color: #fff;
+    background: #1a16ff;
+}
+#submit-field .loading{
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #a200ff;
+    border: none;
+    padding: 5px;
+    display: none; /*TO FLEX*/
+    background: #eee5;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    z-index: 100;
+    border-radius: 5px;
+}
+#submit-field .loading .load{
+    position: absolute;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
-    border: 5px solid #fff;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border: 5px solid #fff7;
+    border-top: 5px solid #fff;
+    animation: loading linear infinite 1s;
 }
-.dp h1{
-    color: #fff;
-    font-size: 5rem;
-}
-.head{
+.message{
+    font-size: 0.85rem;
     position: relative;
-}
-.welcome h1{
-    color: #3700ff;
-    font-size: 3rem;
-}
-.body{
-    position: relative;
-    padding: 20px;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-}
-.sub-head{
-    color: #3700ff;
+    color: #ff0000;
+    width: 100%;
+    white-space: wrap;
     text-align: center;
 }
-.body p{
-    width: 100%;
-    max-width: 500px;
-    color: #510080;
-    line-height: 1.5rem;
-    padding: 15px;
-    background: #eeea;
-    border-radius: 10px;
-    backdrop-filter: blur(3px);
+@keyframes loading {
+    0%{
+        transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
+    }
+    100%{
+        transform: translateX(-50%) translateY(-50%) rotateZ(360deg);
+    }
 }
-.body form{
-    width: 100%;
+footer{
+    display: flex;
+    gap: 5px;
 }
-.body form input{
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #3700ff;
-    background: #fff;
-    color: #3700ff;
-    border-radius: 10px;
-    transition: 0.3s;
-    cursor: pointer;
+footer span{
+    color: #0a036d;
 }
-.body form input:hover{
-    background: #3700ff;
-    color: #fff;
+footer a{
+    text-decoration: none;
+    color: #3001ff;
+    font-weight: 700;
 }
