@@ -2,7 +2,7 @@
 @media (max-width:768px) {
     div.container div.image{
         display: none;
-    }
+    } 
 }
 @media (max-width:570px) {
     section.sec svg{
@@ -50,8 +50,9 @@
     div.container form div.field input:not(#submit-field input){
         width: 300px;
         background: transparent;
-        border-bottom: 1px solid #0a036d;
-        border-radius: 0px;
+        border: 1px solid #0a036d;
+        background: #fff9;
+        backdrop-filter: blur(2px);
     }
     div.container form div.field input::placeholder{
         color: #0a036d;
@@ -227,7 +228,7 @@ form .field input{
     background: #eee;
     padding: 10px;
     border-radius: 7px;
-    color: #020085;
+    color: #020083;
     caret-color: #1a16ff;
     font-size: 1rem;
 }
