@@ -1,4 +1,0 @@
-# Configuration for all files in the ./public/views directory
-[views/*]
-indent_style = tab
-indent_size = 2
