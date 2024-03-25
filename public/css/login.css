@@ -101,48 +101,6 @@ section{
     align-items: center;
     overscroll-behavior: none;
 }
-/* section::before{
-    content: "";
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    background: #a200ff;
-    top: -150px;
-    left: -150px;
-    border-radius: 50%;
-    z-index: -100;
-}
-section::after{
-    content: "";
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    background: #3700ff;
-    bottom: -150px;
-    right: -150px;
-    border-radius: 50%;
-    z-index: -100;
-}
-.bubble{
-    position: fixed;
-    width: 250px;
-    height: 250px;
-    background: #3700ff;
-    border-radius: 50%;
-    right: -100px;
-    bottom: 250px;
-    z-index: -100;
-}
-.bubble::after{
-    content: "";
-    position: absolute;
-    width: 125px;
-    height: 125px;
-    background: #3700ff;
-    border-radius: 50%;
-    top: -70px;
-    right: 20px;
-} */
 .container{
     position: relative;
     display: flex;
