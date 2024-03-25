@@ -1,10 +1,22 @@
 @import url("fonts.css");
 @media (max-width:768px) {
+    div.container{
+        justify-content: center;
+    }
+    div.container div.top{
+        display: flex;
+    }
     div.container div.image{
         display: none;
     } 
+    div.container div.fill{
+        width: 100%;
+    }
 }
 @media (max-width:570px) {
+    section div.container div.top{
+        display: none;
+    }
     div.container{
         box-shadow: none;
         position: relative;
@@ -14,19 +26,16 @@
         height: 100%;
         border-radius: 0px;
         background: transparent;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
     div.container div.fill div.head{
         background: #3700ff;
         width: 100%;
-        height: 100%;
         justify-content: center;
         border-radius: 75% / 50%;
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
-				gap: 10px;
+		gap: 10px;
+        height: 100%;
     }
     div.container div.fill h1{
         color: #fff;
@@ -43,27 +52,24 @@
     div.container div.fill{
         gap: 0px;
         padding: 0px;
-				padding-bottom: 70px;
         width: 100%;
         height: 100%;
         position: relative;
-        justify-content: center;
+        max-width: 100%;
+        padding-bottom: 70px;
     }
     div.container form{
-        gap: 0px;
+        gap: 50px;
     }
-    div.container form div.field label{
-        display: none;
-    }
-		div.container div.fill form div.field img#f-icon{
-			display: block;
-		}
+	div.container div.fill form div.field img#f-icon{
+		display: block;
+	}
     div.container form div.field input:not(#submit-field input){
         width: 100%;
         background: transparent;
         border-bottom: 1px solid #0a036d;
         border-radius: 0px;
-				padding-left: 35px;
+		padding-left: 35px;
     }
     div.container form div.field input::placeholder{
         color: #0a036d;
@@ -95,7 +101,7 @@ section{
     align-items: center;
     overscroll-behavior: none;
 }
-section::before{
+/* section::before{
     content: "";
     position: fixed;
     width: 500px;
@@ -136,16 +142,34 @@ section::after{
     border-radius: 50%;
     top: -70px;
     right: 20px;
-}
+} */
 .container{
     position: relative;
     display: flex;
     background: #fff;
-    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 1px 1px 20px #5553,
-                -1px -1px 5px #fff5,
-                -1px -1px 20px #5553;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.container .top{
+    display: none;
+}
+.container .top{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: #9fc4ff;
+    align-items: center;
+    padding: 10px;
+}
+.container .top img{
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
 }
 .container .logo{
     display: none;
@@ -158,10 +182,45 @@ section::after{
     top: 0;
     left: 0;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: #005ae6;
+    width: 70%;
+}
+.container .image .pic{
+    position: relative;
+}
+.container .image .pic img{
+    width: 100%;
+    max-width: 600px;
+    object-fit: cover;
+}
+.container .image .pic::after{
+    content: "";
+    width: 100%;
+    height: 20px;
+    background: #005ae6;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
+    left: 0;
+}
+.container .image .pic::before{
+    content: "";
+    width: 20px;
+    height: 100%;
+    background: #005ae6;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(50%);
+}
+.container .image .note{
+    display: flex;
     flex-direction: column;
     align-items: center;
-    background: #1a16ff;
-    justify-content: center;
+    padding: 10px;
 }
 .image .img img{
     width: 100px;
@@ -173,18 +232,33 @@ section::after{
     color: #fff;
     white-space: wrap;
     width: 80%;
-    text-align: center;
     max-width: 350px;
     margin-top: 20px;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    text-align: center;
+}
+.image footer{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.image footer span{
+    font-weight: 700;
+    color: #fff;
+    font-size: 1rem;
 }
 .container .fill{
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: 30px 15px;
     align-items: center;
+    justify-content: center;
     gap: 40px;
+    width: 30%;
+    max-width: 500px;
 }
 .container .fill .head{
     display: flex;
@@ -192,27 +266,15 @@ section::after{
     align-items: center;
 }
 .container .fill h1{
-    color: #a200ff;
-}
-.container .fill p{
-	color: #fff;
-    white-space: wrap;
-    width: 80%;
-    text-align: center;
-    max-width: 350px;
-    margin-top: 20px;
-		line-height: 1.5rem;
-		font-size: 0.9rem;
+    color: #3001ff;
 }
 .fill form{
     width: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     gap: 50px;/*30*/
     align-items: center;
-    height: 100%;
 }
 form .field{
     display: flex;
@@ -244,25 +306,28 @@ form .field #f-icon{
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-		opacity: 0.8;
-		display: none;
+	opacity: 0.8;
 }
 form .field input{
     border: none;
     outline: none;
-    background: #eee;
     padding: 10px;
-    border-radius: 7px;
     color: #020085;
     caret-color: #1a16ff;
     font-size: 1rem;
-		width: 100%;
-}
-form .field #password{
-		padding-right: 35px;
+	width: 100%;
+    background: transparent;
+    border-bottom: 1px solid #0a036d;
+    border-radius: 0px;
+	padding-left: 35px;
 }
 form .field input::placeholder{
-    color: transparent;
+    color: #020085;
+}
+form .field #password{
+	padding-right: 35px;
+    -webkit-text-security: none;
+    text-security: none;
 }
 #submit-field{
     position: relative;
@@ -275,13 +340,14 @@ form .field input::placeholder{
 #submit-field .inp-f{
     position: relative;
     width: 100%;
-		height: 45px;
+	height: 45px;
 }
 #submit-field input{
     width: 100%;
     color: #fff;
     background: #1a16ff;
-		height: 100%;
+	height: 100%;
+    border-radius: 7px;
 }
 #submit-field .loading{
     position: absolute;
@@ -336,6 +402,7 @@ footer{
 }
 footer span{
     color: #0a036d;
+    white-space: nowrap;
 }
 footer a{
     text-decoration: none;

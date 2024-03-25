@@ -12,24 +12,29 @@ html(lang="en")
     section.sec
       div.bubble
       div.container 
+        div.top 
+          img(src="/img/icon.png", alt="")
         div.image 
-          div.img 
-            img(src="/img/img.png", alt="")
-          h1 Favcon
-          p Welcome back, to continue with Favcon please kindly login
+          div.pic 
+            img(src="/img/image.png", alt="")
+          div.note  
+            div.img 
+              img(src="/img/img.png", alt="")
+            h1 Favcon
+            p Welcome to Favcon - where every chat is a favorite waiting to happen. Join now and make chatting your new favorite pastime!
+          footer 
+            p <span>Favcon</span> - your favorite conversation app
         div.fill 
           div.head 
             div.logo 
               img(src="/img/img.png", alt="")
-            h1 Login
+            h1 Log in to Favcon
           form(action="/login", method="post")
             div.field
               img#f-icon(src="/img/user.png", alt="")
-              label(for="username") Username
               input(type="text", name="username", id="username", required, placeholder="Username") 
             div.field 
               img#f-icon(src="/img/padlock.png", alt="")
-              label(for="password") Password
               input(type="password", name="password", id="password", required, placeholder="Password") 
               img(src="/img/view.png", alt="", id="view-pass")
             div.field#submit-field 
