@@ -1,12 +1,21 @@
 @import url("fonts.css");
 @media (max-width:768px) {
+    div.container{
+        justify-content: center;
+    }
+    div.container div.top{
+        display: flex;
+    }
     div.container div.image{
         display: none;
     } 
+    div.container div.fill{
+        width: 100%;
+    }
 }
 @media (max-width:570px) {
-    section.sec svg{
-        display: block;
+    section div.container div.top{
+        display: none;
     }
     div.container{
         box-shadow: none;
@@ -17,13 +26,16 @@
         height: 100%;
         border-radius: 0px;
         background: transparent;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
     div.container div.fill div.head{
-        margin-bottom: 20px;
-        transform: translateY(-15px);
+        background: #3700ff;
+        width: 100%;
+        justify-content: center;
+        border-radius: 75% / 50%;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+		gap: 10px;
+        height: 100%;
     }
     div.container div.fill h1{
         color: #fff;
@@ -38,21 +50,26 @@
         display: none;
     }
     div.container div.fill{
-        gap: 15px;
+        gap: 5px;
         padding: 0px;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        max-width: 100%;
+        padding-bottom: 70px;
     }
     div.container form{
-        gap: 25px;
+        gap: 35px;
     }
-    div.container form div.field label{
-        display: none;
-    }
+	div.container div.fill form div.field img#f-icon{
+		display: block;
+	}
     div.container form div.field input:not(#submit-field input){
-        width: 300px;
+        width: 100%;
         background: transparent;
-        border: 1px solid #0a036d;
-        background: #fff9;
-        backdrop-filter: blur(2px);
+        border-bottom: 1px solid #0a036d;
+        border-radius: 0px;
+		padding-left: 35px;
     }
     div.container form div.field input::placeholder{
         color: #0a036d;
@@ -66,10 +83,12 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Ubuntu',sans-serif;
+    overscroll-behavior: none;
 }
 body{
     height: 100vh;
-    overflow: hidden;
+    overflow: auto;
+    overscroll-behavior: none;
 }
 section{
     position: relative;
@@ -80,58 +99,35 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-section::before{
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: #a200ff;
-    top: -150px;
-    left: -150px;
-    border-radius: 50%;
-    z-index: -100;
-}
-section::after{
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: #3700ff;
-    bottom: -150px;
-    right: -150px;
-    border-radius: 50%;
-    z-index: -100;
-}
-.bubble{
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    background: #3700ff;
-    border-radius: 50%;
-    right: -100px;
-    bottom: 250px;
-    z-index: -100;
-}
-.bubble::after{
-    content: "";
-    position: absolute;
-    width: 125px;
-    height: 125px;
-    background: #3700ff;
-    border-radius: 50%;
-    top: -70px;
-    right: 20px;
+    overscroll-behavior: none;
 }
 .container{
     position: relative;
     display: flex;
     background: #fff;
-    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 1px 1px 20px #5553,
-                -1px -1px 5px #fff5,
-                -1px -1px 20px #5553;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.container .top{
+    display: none;
+}
+.container .top{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: #8eb9ff88;
+    align-items: center;
+    padding: 10px;
+}
+.container .top img{
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
 }
 .container .logo{
     display: none;
@@ -139,25 +135,50 @@ section::after{
 .container .logo img{
     width: 100px;
 }
-svg{
-    position: fixed;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 570px;
-    height: 500px;
-    background: linear-gradient(#3700ff 40%, transparent 40%);
-    object-fit: cover;
-}
 .container .image{
     position: relative;
     top: 0;
     left: 0;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: #005ae6;
+    width: 70%;
+}
+.container .image .pic{
+    position: relative;
+}
+.container .image .pic img{
+    width: 100%;
+    max-width: 600px;
+    object-fit: cover;
+}
+.container .image .pic::after{
+    content: "";
+    width: 100%;
+    height: 20px;
+    background: #005ae6;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
+    left: 0;
+}
+.container .image .pic::before{
+    content: "";
+    width: 20px;
+    height: 100%;
+    background: #005ae6;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(50%);
+}
+.container .image .note{
+    display: flex;
     flex-direction: column;
     align-items: center;
-    background: #1a16ff;
-    justify-content: center;
+    padding: 10px;
 }
 .image .img img{
     width: 100px;
@@ -169,18 +190,33 @@ svg{
     color: #fff;
     white-space: wrap;
     width: 80%;
-    text-align: center;
     max-width: 350px;
     margin-top: 20px;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    text-align: center;
+}
+.image footer{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.image footer span{
+    font-weight: 700;
+    color: #fff;
+    font-size: 1rem;
 }
 .container .fill{
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: 30px 15px;
     align-items: center;
+    justify-content: center;
     gap: 20px;
+    width: 30%;
+    max-width: 500px;
 }
 .container .fill .head{
     display: flex;
@@ -188,17 +224,15 @@ svg{
     align-items: center;
 }
 .container .fill h1{
-    color: #a200ff;
+    color: #3001ff;
 }
 .fill form{
     width: 100%;
-    padding: 20px;
+    padding: 10px 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    gap: 30px;
+    gap: 40px;/*30*/
     align-items: center;
-    height: 100%;
 }
 form .field{
     display: flex;
@@ -212,7 +246,7 @@ form .field{
 form .field label{
     color: #a200ff;
 } 
-form .field img{
+form .field #view-pass{
     position: absolute;
     width: 20px;
     height: auto;
@@ -222,18 +256,34 @@ form .field img{
     cursor: pointer;
     z-index: 5;
 }
+form .field #f-icon{
+	position: absolute;
+    width: 20px;
+    height: auto;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+	opacity: 0.8;
+}
 form .field input{
     border: none;
     outline: none;
-    background: #eee;
     padding: 10px;
-    border-radius: 7px;
-    color: #020083;
+    color: #020085;
     caret-color: #1a16ff;
     font-size: 1rem;
+	width: 100%;
+    background: transparent;
+    border-bottom: 1px solid #0a036d;
+    border-radius: 0px;
+	padding-left: 35px;
 }
 form .field input::placeholder{
-    color: transparent;
+    color: #020085;
+}
+.fill form .field input::-ms-reveal, .fill form .field input::-ms-clear{
+	display: none;
 }
 #submit-field{
     position: relative;
@@ -246,11 +296,14 @@ form .field input::placeholder{
 #submit-field .inp-f{
     position: relative;
     width: 100%;
+	height: 45px;
 }
 #submit-field input{
     width: 100%;
     color: #fff;
     background: #1a16ff;
+	height: 100%;
+    border-radius: 7px;
 }
 #submit-field .loading{
     position: absolute;
@@ -298,9 +351,14 @@ form .field input::placeholder{
 footer{
     display: flex;
     gap: 5px;
+    align-items: flex-start;
+
+    justify-content: center;
+    width: 100%;
 }
 footer span{
     color: #0a036d;
+    white-space: nowrap;
 }
 footer a{
     text-decoration: none;

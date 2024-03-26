@@ -34,7 +34,7 @@
         border-radius: 75% / 50%;
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
-		gap: 10px;
+		gap: 15px;
         height: 100%;
     }
     div.container div.fill h1{
@@ -50,7 +50,7 @@
         display: none;
     }
     div.container div.fill{
-        gap: 0px;
+        gap: 5px;
         padding: 0px;
         width: 100%;
         height: 100%;
@@ -120,7 +120,7 @@ section{
     left: 0;
     width: 100%;
     z-index: 100;
-    background: #9fc4ff;
+    background: #8eb9ff88;
     align-items: center;
     padding: 10px;
 }
@@ -282,10 +282,8 @@ form .field input{
 form .field input::placeholder{
     color: #020085;
 }
-form .field #password{
-	padding-right: 35px;
-    -webkit-text-security: none;
-    text-security: none;
+.fill form .field input::-ms-reveal, .fill form .field input::-ms-clear{
+	display: none;
 }
 #submit-field{
     position: relative;
