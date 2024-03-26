@@ -123,11 +123,23 @@ router.post("/2FA/verify-email/:email/:id", async (request, response)=>{
 router.get("/2FA/2fa/:id", async (request, response)=>{
     const check = await User.findOne({unique: request.params.id})
     if(check){
-        const secret = JSON.parse(check.secret)
-        const enabled = (check.TFA_enabled)? "none": "flex"
-        qrcode.toDataURL(secret.otpauth_url, (err, data)=>{
-            response.render("auth", {qrcode: data, secret: secret.base32, display: enabled, id: request.params.id})
-        })
+        if(!check.secret){
+            let secret = speakeasy.generateSecret({
+                name: check.username
+            })
+
+            await User.findByIdAndUpdate(check._id, {secret: JSON.stringify(secret)})
+            const enabled = (check.TFA_enabled)? "none": "flex"
+            qrcode.toDataURL(secret.otpauth_url, (err, data)=>{
+                response.render("auth", {qrcode: data, secret: secret.base32, display: enabled, id: request.params.id})
+            })
+        }else{
+            const secret = JSON.parse(check.secret)
+            const enabled = (check.TFA_enabled)? "none": "flex"
+            qrcode.toDataURL(secret.otpauth_url, (err, data)=>{
+                response.render("auth", {qrcode: data, secret: secret.base32, display: enabled, id: request.params.id})
+            })
+        }
     }else{
         response.redirect("/login")
     }
