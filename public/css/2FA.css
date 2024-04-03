@@ -140,48 +140,7 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-section::before{
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: #a200ff;
-    top: -150px;
-    left: -150px;
-    border-radius: 50%;
-    z-index: -100;
-}
-section::after{
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: #3700ff;
-    bottom: -150px;
-    right: -150px;
-    border-radius: 50%;
-    z-index: -100;
-}
-.bubble{
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    background: #3700ff;
-    border-radius: 50%;
-    right: -100px;
-    bottom: 250px;
-    z-index: -100;
-}
-.bubble::after{
-    content: "";
-    position: absolute;
-    width: 125px;
-    height: 125px;
-    background: #3700ff;
-    border-radius: 50%;
-    top: -70px;
-    right: 20px;
+    background: #bbb;
 }
 svg{
     position: fixed;
@@ -195,8 +154,37 @@ svg{
     z-index: -100;
 }
 /***********************SELECT*********************/
+.select-con{
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 0px 10px #0002,
+                1px 1px 20px #0002;
+}
+.side{
+    background-color: #005ae6;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.side .heading{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+.heading h1{
+    color: #fff;
+}
+.heading p{
+    color: #fff;
+    font-size: 0.95rem;
+}
+.side img{
+    width: 100%;
+}
 .select{
-    display: flex;/*TO FLEX*/
+    display: flex;
     flex-direction: column;
     position: relative;
     max-width: 500px;
@@ -204,9 +192,6 @@ svg{
     gap: 50px;
     align-items: center;
     background: #fff;
-    border-radius: 20px;
-    box-shadow: 1px 1px 5px #5555,
-                -1px -1px 15px #5555;
 }
 .select .head{
     display: flex;
@@ -215,11 +200,11 @@ svg{
     gap: 50px;
 }
 .select h1{
-    color: #a200ff;
+    color: #2700b3;
 }
 .select .mission{
     text-align: center;
-    color: #a200ff;
+    color: #777;
 }
 .select .choose{
     position: relative;
@@ -285,21 +270,33 @@ svg{
     background: #3700ff;
     color: #fff;
     transition: 0.5s;
+    cursor: pointer;
 }
 #select-con:hover{
     background: #2700b3;
 }
 
 /***********************EMAIL DETAILS*****************/
+.email-details-con{
+    display: none;
+    flex-direction: row;
+    box-shadow: 0px 0px 10px #0002,
+                1px 1px 20px #0002;
+}
 .email-details{
-    display: none;/*TO FLEX*/
+    display: flex;
     flex-direction: column;
-    gap: 100px;
+    justify-content: space-around;
     padding: 20px;
     background: #fff;
-    border-radius: 20px;
-    box-shadow: 1px 1px 5px #5555,
-                -1px -1px 15px #5555;
+}
+.email-details .img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.email-details .img img{
+    width: 100px;
 }
 .email-details .head{
     display: flex;
@@ -308,10 +305,10 @@ svg{
     align-items: center;
 }
 .email-details .head h1{
-    color: #a200ff;
+    color: #2700b3;
 }
 .email-details .head p{
-    color: #a200ff;
+    color: #200092;
     text-align: center;
 }
 .email-details .sec{
@@ -334,31 +331,35 @@ svg{
     color: #fff;
     border-radius: 10px;
     transition: 0.5s;
+    cursor: pointer;
 }
 .email-details .sec .field input:not(#email):hover{
     background: #2700b3;
 }
 .email-details .sec .field label{
-    color: #2700b3;
+    color: #200092;
+    padding-left: 20px;
 }
 .email-details .sec .field .inp{
     display: flex;
-}
-.email-details .sec .field .inp input:nth-child(1){
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-.email-details .sec .field .inp input:nth-child(2){
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    font-weight: 500;
+    position: relative;
+    background: #e9e9ef;
+    border-radius: 30px;
+    padding: 7px 10px;
+    align-items: center;
+    justify-content: center;
 }
 .email-details .sec .field #email{
     width: 100%;
-    background: #eee;
+    background: transparent;
     color: #2700b3;
     caret-color: #3700ff;
-    font-weight: 500;
+    padding: 0px 10px;
+    cursor: default;
+}
+.email-details .sec .field #save{
+    padding: 7px 10px;
+    border-radius: 30px;
 }
 #submit-email{
     display: flex;

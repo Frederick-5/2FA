@@ -1,8 +1,8 @@
 const socket = io("/")
 const ID = document.getElementById("id")
 
-const SELECT = document.querySelector("div.select")
-const EMAIL_DETAILS = document.querySelector("div.email-details")
+const SELECT = document.querySelector("div.select-con")
+const EMAIL_DETAILS = document.querySelector("div.email-details-con")
 
 const select_con = document.getElementById("select-con")
 

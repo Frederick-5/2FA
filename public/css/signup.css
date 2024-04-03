@@ -11,8 +11,24 @@
     } 
     div.container div.fill{
         width: 100%;
+        max-width: 500px;
     }
 }
+@media (max-width: 990px){
+    div.container div.image{
+        flex-direction: column-reverse;
+        gap: 0;
+        width: 60%;
+    }
+    div.container div.image div.pic img{
+        max-width: 400px;
+    }
+    div.container .fill{
+        width: 40%;
+        max-width: 40%;
+    }
+}
+
 @media (max-width:570px) {
     section div.container div.top{
         display: none;
