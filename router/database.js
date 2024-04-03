@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const bcrypt = require("bcrypt")
 require("dotenv").config()
 
-mongoose.connect(process.env.TEST_DB)
+mongoose.connect(process.env.DB)
 
 const Schema = new mongoose.Schema({
     fullname: String,
