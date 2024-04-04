@@ -125,7 +125,7 @@ section{
 }
 /***********************SELECT*********************/
 .select-con{
-    display: none;
+    display: flex;
     flex-direction: row;
     box-shadow: 0px 0px 10px #0002,
                 1px 1px 20px #0002;
@@ -194,6 +194,7 @@ section{
     padding: 20px;
     background: #eee;
     border-radius: 15px;
+    border: 1px solid #ccc;
 }
 .choose .choice .field label{
     font-weight: 700;
@@ -254,7 +255,7 @@ section{
 
 /***********************EMAIL DETAILS*****************/
 .email-details-con{
-    display: flex;
+    display: none;
     flex-direction: row;
     box-shadow: 0px 0px 10px #0002,
                 1px 1px 20px #0002;
