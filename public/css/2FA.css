@@ -246,11 +246,13 @@ section{
     border-radius: 10px;
     background: #3700ff;
     color: #fff;
-    transition: 0.5s;
     cursor: pointer;
+    transition-duration: 0.2s;
 }
 #select-con:hover{
-    background: #2700b3;
+    background: #2600af;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
 
 /***********************EMAIL DETAILS*****************/
@@ -310,14 +312,19 @@ section{
     background: #3700ff;
     color: #fff;
     border-radius: 10px;
-    transition: 0.5s;
     cursor: pointer;
+    transition-duration: 0.2s;
 }
 .email-details .sec .field input:not(#email):hover{
-    background: #2700b3;
+    background: #2600af;
+}
+.email-details .sec .field input:not(#email, #save):hover{
+    background: #2600af;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
 .email-details .sec .field label{
-    color: #2500aa;
+    color: #22009e;
     padding-left: 20px;
 }
 .email-details .sec .field .inp{
