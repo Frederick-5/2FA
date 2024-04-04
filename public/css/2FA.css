@@ -1,124 +1,105 @@
 @import url("fonts.css"); 
+@media (max-width:800px) {
+    div.side{
+        display: none;
+    }
+    div.select-con, div.select{
+        border-radius: 10px;
+    }
+    div.email-details-con, div.email-details{
+        border-radius: 10px;
+    }
+}
 @media (max-width:570px) {
     body{
         overflow: auto;
     }
-    section.sec svg{
-        display: block;
-    }
-    section.sec:before{
-        display: none;
-    }
-    section.sec::after{
-        display: none;
-    }
-    div.bubble{
-        display: none;
-    }
-    section div.select{
-        max-width: 300px;
-    }
     /***********************SELECT*********************/
-    section div.select{
-        box-shadow: none;
+    
+    section div.select-con{
         position: relative;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        border-radius: 0px;
-        background: transparent;
-        justify-content: center;
-        align-items: center;
+        border-radius: 0;
+        box-shadow: none;
     }
-    div.select div.head{
-        margin-bottom: 30px;
-        gap: 30px;
-        transform: translateY(-20px);
-    }
-    div.select div.head h1{
-        color: #fff;
-    }
-    div.select div.head .mission{
-        color: #fff;
-        font-size: 0.9rem;
-    }
-    div.select div.choose{
+    div.select-con div.select{
+        border-radius: 0;
         padding: 0px;
+        background: #3700ff;
+        gap: 0;
+        max-width: 100%;
+        width: 100%;
+        height: 100%;
     }
-    div.select div.choose p{
-        font-size: 0.9rem;
+    div.select-con div.select .head, div.select-con div.select .choose, div.select-con div.select .btn{
+        height: 100%;
+    }
+    div.select-con div.select div.head{
+        padding: 20px;
+    }
+    div.select-con div.select div.head h1, div.select-con div.select div.head .mission{
+        color: #fff;
+    }
+    div.select-con div.select div.choose{
+        border-radius: 50%/ 25%;
+        background: #fff;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        padding: 20px;
+    }
+    div.select-con div.select div.btn{
+        background: #fff;
+        padding: 20px;
+        padding-top: 0px;
+        align-items: center;
+        justify-content: center;
+    }
+    div.select-con div.select div.btn #select-con{
+        width: 90%;
     }
     /***********************EMAIL DETAILS*****************/
-    section div.email-details{
-        box-shadow: none;
+    section div.email-details-con{
         position: relative;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         border-radius: 0px;
-        background: transparent;
-        justify-content: center;
-        align-items: center;
-    }
-    div.email-details div.head{
-        transform: translateY(-100px);
-    }
-    div.email-details div.head h1{
-        color: #fff;
-    }
-    div.email-details div.head p{
-        color: #fff;
-        font-size: 0.9rem;
-    }
-    /*******************VERIFICATION CODE********************/
-    section div.verify-email{
         box-shadow: none;
-        position: relative;
-        top: 0;
-        left: 0;
+    }
+    div.email-details-con div.email-details{
+        border-radius: 0px;
+        max-width: 100%;
         width: 100%;
         height: 100%;
-        border-radius: 0px;
-        background: transparent;
-        justify-content: center;
-        align-items: center;
+        gap: 0;
+        padding: 0px;
+        background: #3700ff;
     }
-    div.verify-email div.head{
-        transform: translateY(-30px);
+    div.email-details-con div.email-details .head{
+        height: 70%;
+        padding: 20px;
     }
-    div.verify-email div.head h1{
+    div.email-details-con div.email-details .head h1, div.email-details-con div.email-details .head p{
         color: #fff;
     }
-    div.verify-email div.head p{
-        width: 100%;
-        color: #fff;
-        font-size: 0.9rem;
+    div.email-details-con div.email-details .head .img img:nth-child(1){
+        display: none;
     }
-    /*********************2FA MOBILE*********************/
-    section div.tfa-mobile{
-        box-shadow: none;
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 100%;
+    div.email-details-con div.email-details .head #img{
+        display: block;
+    }
+    div.email-details-con div.email-details .sec{
         height: 100%;
-        border-radius: 0px;
-        background: transparent;
+        padding: 20px;
+        background: #fff;
+        border-radius: 50%/25%;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
         justify-content: center;
-        align-items: center;
-    }
-    div.tfa-mobile div.head{
-        transform: translateY(-50px);
-    }
-    div.tfa-mobile div.head h1{
-        color: #fff;
-    }
-    div.tfa-mobile div.head p{
-        width: 100%;
-        color: #fff;
-        font-size: 0.9rem;
     }
 }
 *{
@@ -129,7 +110,6 @@
 }
 body{
     height: 100vh;
-    overflow: hidden;
 }
 section{
     position: relative;
@@ -141,21 +121,11 @@ section{
     justify-content: center;
     align-items: center;
     background: #bbb;
-}
-svg{
-    position: fixed;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 570px;
-    height: 500px;
-    background: linear-gradient(#3700ff 40%, transparent 40%);
-    object-fit: cover;
-    z-index: -100;
+    overflow: auto;
 }
 /***********************SELECT*********************/
 .select-con{
-    display: flex;
+    display: none;
     flex-direction: row;
     box-shadow: 0px 0px 10px #0002,
                 1px 1px 20px #0002;
@@ -260,6 +230,12 @@ svg{
 .choose .choice .field input:checked ~ .radio:after{
     transform: scale(1);
 }
+.select .btn{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
 #select-con{
     width: 100%;
     border: none;
@@ -278,7 +254,7 @@ svg{
 
 /***********************EMAIL DETAILS*****************/
 .email-details-con{
-    display: none;
+    display: flex;
     flex-direction: row;
     box-shadow: 0px 0px 10px #0002,
                 1px 1px 20px #0002;
@@ -286,7 +262,7 @@ svg{
 .email-details{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    gap: 100px;
     padding: 20px;
     background: #fff;
 }
@@ -298,6 +274,9 @@ svg{
 .email-details .img img{
     width: 100px;
 }
+#img{
+    display: none;
+}
 .email-details .head{
     display: flex;
     flex-direction: column;
@@ -308,7 +287,7 @@ svg{
     color: #2700b3;
 }
 .email-details .head p{
-    color: #200092;
+    color: #2500aa;
     text-align: center;
 }
 .email-details .sec{
@@ -337,7 +316,7 @@ svg{
     background: #2700b3;
 }
 .email-details .sec .field label{
-    color: #200092;
+    color: #2500aa;
     padding-left: 20px;
 }
 .email-details .sec .field .inp{
